@@ -1,6 +1,8 @@
 <template lang="pug">
   div
-    img(v-for='photo in photoList', fluid, :src='photo.urls.thumb')
+    h3 Unsplash Viewer
+    div.flex-containter.brightness
+      img.item(v-for='photo in photoList', fluid, :src='photo.urls.thumb')
 </template>
 
 <script>
@@ -30,4 +32,26 @@
   }
 </script>
 <style scoped>
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    margin: 10px;
+  }
+
+  .brightness {
+    background-color: white;
+    display: inline-block;
+
+  }
+  .brightness img:hover {
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    opacity: .5;
+  }
 </style>
