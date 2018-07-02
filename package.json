@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "pug": "^2.0.3",
+    "unsplash-js": "^4.8.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
