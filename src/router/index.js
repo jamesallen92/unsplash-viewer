@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TiledPictures from '@/components/TiledPictures'
+import ImageView from '@/components/ImageView'
 
 Vue.use(Router)
 
@@ -10,6 +11,12 @@ export default new Router({
       path: '/',
       name: 'TiledPictures',
       component: TiledPictures
+    },
+    {
+      path: '/view/:image_id',
+      name: 'ImageView',
+      component: ImageView,
+      props: true
     }
   ]
 })
