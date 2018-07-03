@@ -1,8 +1,23 @@
 <template lang="pug">
   div
     h3 Unsplash Viewer
-    img(fluid, :src='photo.urls.regular')
-    
+    dl
+      dt(v-if='photo.location')  Location:
+      dd(v-if='photo.location') {{photo.location.title}}
+      dt Photographer:
+      dd
+        a(:href="photo.user.portfolio_url")
+          img.profile-image(fluid, :src='photo.user.profile_image.small', v-if='display')
+          span {{photo.user.name}}
+      dt Views:
+      dd {{photo.views}}
+      dt Likes:
+      dd {{photo.likes}}
+    div.container
+      div.left-arrow
+      div.right-arrow
+      img(fluid, :src='photo.urls.regular', v-if='display')
+
 </template>
 
 <script>
@@ -16,7 +31,8 @@
     },
     data: function () {
       return {
-        photo: {}
+        photo: {},
+        display: false
       }
     },
     props: {
@@ -37,10 +53,38 @@
           .then(toJson)
           .then(json => {
             this.photo = json
+            this.display = true
         })
       }
     }
   }
 </script>
 <style scoped>
+  .profile-image {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  dt{
+    float: left;
+    font-weight: bold;
+  }
+  dd {
+    margin-left: 0px;
+  }
+  dl {
+    margin-left: 40%;
+    width: 300px;
+  }
+  .left-arrow {
+
+  }
+  .right-arrow {
+
+  }
+
+  .container {
+    margin-left: 8%;
+    width: 1000px;
+  }
 </style>
