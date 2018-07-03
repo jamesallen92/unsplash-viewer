@@ -12,7 +12,6 @@ export default {
   },
   mutations: {
     setPhotos (state, data) {
-      console.log(data)
       state.photos.push(...data)
     }
   },
@@ -22,7 +21,7 @@ export default {
   actions: {
     LOAD_PHOTOS: ({commit, state}) => {
       state.paginator++
-      return unsplash.photos.listPhotos(state.paginator, 30, 'latest')
+      return unsplash.photos.listPhotos(state.paginator, 50, 'latest')
         .then(toJson)
         .then((res) => commit('setPhotos', res))
     }

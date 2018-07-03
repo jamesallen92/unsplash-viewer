@@ -1,7 +1,7 @@
 <template lang="pug">
     div
         h3 Unsplash Viewer
-        div.flex-containter.brightness(onscroll='onScroll')
+        div.flex-containter.brightness
             router-link(v-for='photo in $store.state.photos', :to='{name: "ImageView", params: {image_id: photo.id}}', :key='photo.id')
                 img.item(fluid, :src='photo.urls.thumb')
 </template>
@@ -11,10 +11,23 @@
     name: 'TiledPictures',
     mounted () {
       this.$store.dispatch('LOAD_PHOTOS')
+      window.addEventListener('scroll', () => {
+        this.bottom = this.atBottom()
+      })
+    },
+    data () {
+      return {
+        bottom: false
+      }
     },
     methods: {
-      onScroll () {
-        console.log('sfddsf')
+      atBottom () {
+        const visible = document.documentElement.clientHeight
+        const pageHeight = document.documentElement.scrollHeight
+        const bottomOfPage = visible + window.scrollY >= pageHeight
+        if (bottomOfPage || pageHeight < visible) {
+          this.$store.dispatch('LOAD_PHOTOS')
+        }
       }
     }
   }

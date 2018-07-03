@@ -1,22 +1,26 @@
 <template lang="pug">
   div
     h3 Unsplash Viewer
-    dl
-      dt(v-if='photo.location')  Location:
-      dd(v-if='photo.location') {{photo.location.title}}
-      dt Photographer:
-      dd
-        a(:href="photo.user.portfolio_url")
-          img.profile-image(fluid, :src='photo.user.profile_image.small', v-if='display')
-          span {{photo.user.name}}
-      dt Views:
-      dd {{photo.views}}
-      dt Likes:
-      dd {{photo.likes}}
-    div.container
+    div(v-if='display')
+        dl
+          div(v-if='photo.location')
+              dt  Location:
+              dd {{photo.location.title}}
+          dt Photographer:
+          dd
+              img.profile-image(fluid, :src='photo.user.profile_image.small')
+              span {{photo.user.name}}
+          dd(v-if='photo.user.portfolio_url') Portfolio URL:
+          dd(v-if='photo.user.portfolio_url')
+            a(:href="photo.user.portfolio_url") {{photo.user.portfolio_url}}
+          dt Views:
+          dd {{photo.views}}
+          dt Likes:
+          dd {{photo.likes}}
+    div.container(v-if='display')
       div.left-arrow
       div.right-arrow
-      img(fluid, :src='photo.urls.regular', v-if='display')
+      img(fluid, :src='photo.urls.regular')
 
 </template>
 
