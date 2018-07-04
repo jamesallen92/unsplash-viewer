@@ -13,7 +13,7 @@ export default new Router({
       component: TiledPictures
     },
     {
-      path: '/view/:image_id',
+      path: '/view/:image_id/:index',
       name: 'ImageView',
       component: ImageView,
       props: true

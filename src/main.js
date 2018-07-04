@@ -5,7 +5,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VModal from 'vue-js-modal'
 
+Vue.use(VModal)
 Vue.use(Vuex)
 Vue.config.productionTip = false
 

@@ -2,12 +2,16 @@
     div
         h3 Unsplash Viewer
         div.flex-containter.brightness
-            router-link(v-for='photo in $store.state.photos', :to='{name: "ImageView", params: {image_id: photo.id}}', :key='photo.id')
+            router-link(v-for='(photo, index) in $store.state.photos', :to='{name: "ImageView", params: {image_id: photo.id, index: index.toString()}}', :key='photo.id')
                 img.item(fluid, :src='photo.urls.thumb')
 </template>
 
 <script>
+  import Lightbox from 'vue-image-lightbox'
   export default {
+    components: {
+      Lightbox
+    },
     name: 'TiledPictures',
     mounted () {
       this.$store.dispatch('LOAD_PHOTOS')
