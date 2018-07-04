@@ -7,11 +7,7 @@
 </template>
 
 <script>
-  import Lightbox from 'vue-image-lightbox'
   export default {
-    components: {
-      Lightbox
-    },
     name: 'TiledPictures',
     mounted () {
       this.$store.dispatch('LOAD_PHOTOS')

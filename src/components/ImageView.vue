@@ -36,7 +36,7 @@
     name: 'ImageView',
     beforeRouteEnter (to, from, next) {
       next(vm => {
-        vm.photo = vm.$store.state.photos[vm.index]
+        vm.getData()
       })
     },
     data: function () {
@@ -72,7 +72,7 @@
           })
       },
       nextImage () {
-        this.$router.push({name: 'ImageView', params: {image_id: photo.id, index: index}})
+        this.$router.push({name: 'ImageView', params: {image_id: this.photo.id, index: this.index}})
       },
       prevImage () {
         console.log('fsdfsdf')
